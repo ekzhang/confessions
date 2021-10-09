@@ -1,86 +1,25 @@
 <script>
-  import { page } from "$app/stores";
+  import NavLink from "./NavLink.svelte";
 </script>
 
-<header>
-  <nav>
-    <ul>
-      <li class:active={$page.path === "/"}>
-        <a sveltekit:prefetch href="/">Home</a>
-      </li>
-      <li class:active={$page.path === "/about"}>
-        <a sveltekit:prefetch href="/about">About</a>
-      </li>
-    </ul>
-    <svg viewBox="0 0 2 3" aria-hidden="true">
-      <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-    </svg>
+<div class="flex justify-center max-w-full overflow-hidden">
+  <nav
+    class="w-full max-w-screen-lg h-16 flex items-center space-x-2 sm:space-x-3 px-4 font-serif overflow-x-auto"
+  >
+    <h1 class="pr-1 sm:pr-2 pt-1.5 text-xl sm:text-2xl heading">
+      <a href="/">confessions</a>
+    </h1>
+    <NavLink href="/">home</NavLink>
+    <NavLink href="/new">new</NavLink>
+    <NavLink href="/submit">submit</NavLink>
+    <NavLink href="/search">search</NavLink>
   </nav>
+</div>
 
-  <div class="corner">
-    <!-- TODO put something else here? github link? -->
-  </div>
-</header>
+<div class="h-0.5 gradient" />
 
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    --background: rgba(255, 255, 255, 0.7);
-  }
-
-  svg {
-    width: 2em;
-    height: 3em;
-    display: block;
-  }
-
-  path {
-    fill: var(--background);
-  }
-
-  ul {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    height: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    background: var(--background);
-    background-size: contain;
-  }
-
-  li {
-    position: relative;
-    height: 100%;
-  }
-
-  li.active {
-    text-decoration: underline;
-  }
-
-  nav a {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    padding: 0 1em;
-    color: var(--heading-color);
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: color 0.2s linear;
-  }
-
-  a:hover {
-    color: var(--accent-color);
+<style lang="postcss">
+  .gradient {
+    @apply bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
   }
 </style>
